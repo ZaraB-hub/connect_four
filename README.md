@@ -5,7 +5,7 @@ A fun and challenging board game implemented in the Rust programming language
 The game is a two-player connection game, in which players take turns dropping colored tokens into a vertically suspended grid. The goal is to connect four of your colored tokens in a row, horizontally, vertically or diagonally. The first player to achieve this wins the game.
 
 <h2>About the Project</h2>
-This project was created by Zara Bahtanovic as a personal project.
+This project was created by Zara Bahtanovic as part of the IT 305 Programming Languages course at International Burch University.
 
 <h2>Running the Project</h1>
 To run the project, you will need to have Rust installed on your machine. If you don't already have Rust, you can find installation instructions on the official Rust website https://www.rust-lang.org/learn/get-started
