@@ -15,6 +15,13 @@ pub fn continue_game(state: GameState) {
 
     loop {
 
+        let num_cols = grid.first().unwrap().len();
+
+        for i in 0.. num_cols {
+            print!("   {}   ", i);
+        }
+        println!(" ");
+
         for row in grid.iter() {
             print!("│");
             for element in row.iter() {
@@ -53,9 +60,18 @@ pub fn continue_game(state: GameState) {
 
         if !found {
             println!("Column is full. Please choose another column.");
+            if moves == max_turns {
+                println!("The game is a draw!");
+                break;
+            }
             continue;
         }
 
+        
+        for i in 0.. num_cols {
+            print!("   {}   ", i);
+        }
+        println!(" ");
         // Print the grid
         for row in grid.iter() {
             print!("│");

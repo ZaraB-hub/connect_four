@@ -1,9 +1,12 @@
 use crate::win::check_win;
+use std::fs::File;
+use std::io::prelude::*;
 use std::io;
+use crate::savable::GameState;
+
 
 pub fn run(row: usize, col: usize) {
     let mut grid: Vec<Vec<char>> = vec![vec![' '; col]; row];
-
     let mut current_player = '\u{1F534}'; // Red player goes first
     let mut player1: Vec<usize> = Vec::new();
     let mut player2: Vec<usize> = Vec::new(); // Vector to store player moves
@@ -100,5 +103,21 @@ pub fn run(row: usize, col: usize) {
         println!("");
         println!("Player '\u{1F534}':{:?}", player1);
         println!("Player '\u{1F535}':{:?}", player2);
+
+         // Make a copy of the player1 and player2 vectors before they are moved into the GameState struct
+        let grid_copy=grid.clone();
+        let player1_copy = player1.clone();
+        let player2_copy = player2.clone();
+
+         // Save the game state to a file
+        let state = GameState{grid:grid_copy, player1:player1_copy, player2:player2_copy, current_player:current_player, max_turns:max_turns, moves:moves};
+        let serialized = serde_json::to_string(&state).unwrap();  // serialize the GameState as a JSON string
+        let mut file = File::create("state.txt").unwrap();  // create a file
+        file.write_all(serialized.as_bytes()).unwrap();
+
     }
+
+
+
+
 }
