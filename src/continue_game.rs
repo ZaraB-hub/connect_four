@@ -18,18 +18,19 @@ pub fn continue_game(state: GameState) {
         let num_cols = grid.first().unwrap().len();
 
         for i in 0.. num_cols {
-            print!("   {}   ", i);
+            print!("{:^8}", i);
         }
         println!(" ");
 
-        for row in grid.iter() {
+    // Print the grid
+    for row in grid.iter() {
+        print!("│");
+        for element in row.iter() {
+            print!("{:^6}", element);
             print!("│");
-            for element in row.iter() {
-                print!("  {}   ", element);
-                print!("│");
-            }
-            println!(" ");
         }
+        println!(" ");
+    }
         
         println!("Enter a column number (0-{}):", grid[0].len() - 1);
 
@@ -51,7 +52,7 @@ pub fn continue_game(state: GameState) {
         // Find the first free spot in the selected column
         let mut found = false;
         for (_i, row) in grid.iter_mut().enumerate().rev() {
-            if row[column] == ' ' {
+            if row[column] == '\u{2B1B}' {
                 row[column] = current_player;
                 found = true;
                 break;
@@ -60,23 +61,18 @@ pub fn continue_game(state: GameState) {
 
         if !found {
             println!("Column is full. Please choose another column.");
-            if moves == max_turns {
-                println!("The game is a draw!");
-                break;
-            }
             continue;
         }
-
         
         for i in 0.. num_cols {
-            print!("   {}   ", i);
+            print!("{:^8}", i);
         }
         println!(" ");
         // Print the grid
         for row in grid.iter() {
             print!("│");
             for element in row.iter() {
-                print!("  {}   ", element);
+                print!("{:^6}", element);
                 print!("│");
             }
             println!(" ");
