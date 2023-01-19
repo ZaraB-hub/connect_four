@@ -12,7 +12,7 @@ To run the project, you will need to have Rust installed on your machine. If you
 
 Once Rust is installed, follow these steps to run the game:
 
-    1. Clone the repository: git clone https://github.com/zara-b/connect-4-rust.git
+    1. Clone the repository: git clone https://github.com/Zarab-hub/connect-4-rust.git
     2. Change into the project directory: cd connect-4-rust
     3. Build the project: cargo build
     4. Run the project: cargo run
